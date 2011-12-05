@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Popcorn Etherpad-playback plug-in demo</title>
+  
+  <script src="../../popcorn.js"></script>
+  <script src="popcorn.etherpad-playback.js"></script>
+  <script>
+    document.addEventListener( "DOMContentLoaded", function() {
+      var p = Popcorn( "#video" ).play(); 
+      for (var i=1; i<=73; i++) {
+        p.etherpad_playback({
+          start: i/3,
+          revNum: i,
+          padId: "popcornjs-test",
+          target: "etherpaddiv"
+        });
+      }
+    }, false);
+
+  </script>
+</head>
+<body>
+  <h1 id="qunit-header">Popcorn Etherpad-playback plug-in demo</h1>
+  <p> This plugin renders the contents of an existing Etherpad-Lite document at a specified point in its revision history. This is particularly useful for syncing the character-by-character edits in a document with the timeline of a screencast. (Note that this plugin does not embed an editable document, but the content of a previously-edited document.)</p>
+  <div>
+    <video id="video" 
+      controls 
+      width="250px"
+      poster="../../test/poster.png"> 
+
+      <source id="mp4"
+        src="../../test/trailer.mp4"
+        type='video/mp4; codecs="avc1, mp4a"'> 
+
+      <source id="ogv"
+        src="../../test/trailer.ogv"
+        type='video/ogg; codecs="theora, vorbis"'> 
+
+      <p>Your user agent does not support the HTML5 Video element.</p> 
+
+    </video> 
+  </div>
+  <div id="etherpaddiv"> </div>
+</body>
+</html>
