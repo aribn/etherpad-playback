@@ -8,21 +8,28 @@
   <style type="text/css">
     body {
       margin-top: 1.0em;
-      background-color: #7c4a30;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #ffffff;
+      background-color: #FFF;
+      font-family: Georgia, "Bitstream Charter", serif;
+      color: #333;
     }
     #container {
       margin: 0 auto;
       width: 700px;
     }
-    h1 { font-size: 3.8em; color: #83b5cf; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
+    h1 { font-size: 1.8em; color: #369; margin-bottom: 3px;
+      font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+    }
+    h1 .small { font-size: 0.6em; }
     h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #83b5cf; }
-    h3 { text-align: center; color: #83b5cf; }
-    a { color: #83b5cf; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    h2 { font-size: 1.5em; color: #369; 
+      font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+    }
+    h3 { text-align: center; color: #369;
+      font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+    }
+    a { color: #369; }
+    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px;}
+    .description p { font-size: 0.8em; margin-bottom: 30px; margin-top: 30px;line-height:1.4;}
     .download { float: right; }
     pre { background: #000; color: #fff; padding: 15px;}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
@@ -43,28 +50,19 @@
     </div>
 
     <h1><a href="https://github.com/aribn/etherpad-playback">etherpad-playback</a>
-      <span class="small">by <a href="https://github.com/aribn">aribn</a></span></h1>
+      <span class="small">by <a href="https://github.com/aribn">Ari Bader-Natal</a></span></h1>
 
     <div class="description">
-      A Popcorn.js plugin to render the contents of an Etherpad document.
+      A <A HREF="http://popcornjs.org">Popcorn.js</A> plugin to render the contents of an <A HREF="http://etherpad.org">Etherpad</A> document.
+    
+      <P>This is a Popcorn.js plugin that renders the contents of an Etherpad document into a specified target DOM element. Note that this isn't setting up an embedded Etherpad editor (that should be a separate plugin), but rather rendering the HTML contents of an existing Etherpad document into the current page. This is interesting primarily because Etherpad provides near-continuous version control, attaching a unique revision number after every few keystrokes. The idea behind the Popcorn plugin was to give access to each of these revisions, allowing you to step through the creation of a document as the timeline of a video progresses.</P>
     </div>
 
-    
-
-    
-
-    
-
-    
-
-    
-      <h2>Authors</h2>
-      <p>Ari Bader-Natal (ari@aribadernatal.com)<br/>      </p>
-    
 
     
       <h2>Contact</h2>
-      <p>Ari Bader-Natal (ari.badernatal@gmail.com)<br/>      </p>
+      <p><A HREF="http://aribadernatal.com">Ari Bader-Natal</A> (<A HREF="http://twitter.com/aribadernatal">@aribadernatal</A>)
+<br/>      </p>
     
 
     <h2>Download</h2>
