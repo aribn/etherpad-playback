@@ -10,7 +10,7 @@
   <script>
     document.addEventListener( "DOMContentLoaded", function() {
       var p = Popcorn( "#video" ).play(); 
-      for (var i=1; i<=73; i++) {
+      for (var i=1; i<73; i++) {
         p.etherpad_playback({
           start: i/3,
           revNum: i,
@@ -44,6 +44,7 @@
     h3 { text-align: center; color: #369;
       font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
     }
+    .etherpad-text { background-color:#FFF6A9;}
     a { color: #369; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px;}
     .description p { font-size: 0.8em; margin-bottom: 30px; margin-top: 30px;line-height:1.4;}
