@@ -92,29 +92,32 @@ var etherpadcallback;
       // function gets the needed information from etherpad
       // and stores it by appending values to the options object
       window[ "etherpadcallback" + _guid ]  = function ( data ) { 
-
+        
+        var link = document.createElement( "a" );
+        link.setAttribute( "href", "//" + options.hostName + '/p/' + options.padId + "/timeslider" );
+        link.setAttribute( "target", "_blank" );
+        link.setAttribute( "class", "etherpad-link" );
+        link.innerHTML = options.title || options.padId;
+        
         // add the title of the article to the link
-        options._link = document.createElement( "a" );
-        options._link.setAttribute( "href", "//" + options.hostName + '/p/' + options.padId + "/timeslider" );
-        options._link.setAttribute( "target", "_blank" );
-        options._link.setAttribute( "class", "etherpad-link" );
-        options._link.innerHTML = options.title || options.padId;
-
+        options._link = link;
+        
         // get the content of the pad
-        options._desc = document.createElement( "p" );
-        options._desc.setAttribute( "class", "etherpad-text" );
+        var desc = document.createElement( "p" );
+        desc.setAttribute( "class", "etherpad-text" );
         
         try {
           if (data.code == 0) {
             var d = data.data;
-            options._desc.innerHTML = d.html;
+            desc.innerHTML = d.html;
           } else {
-            throw new Error(data.message);
+            Popcorn.errors ( data.message ); 
           }
         } catch (e) { 
           console.log(e);
         }
         
+        options._desc = desc;
         options._fired = true;
       };
       
@@ -123,7 +126,7 @@ var etherpadcallback;
         var scriptUrl = "//" + options.hostName + "/api/1/getHTML?apikey=" + options.apiKey + "&padID=" + options.padId + optionalRevInfo +  "&jsonp=etherpadcallback" + _guid;
         Popcorn.getScript(scriptUrl);
       } else if ( Popcorn.plugin.debug ) {
-        throw new Error( "Etherpad-playback plugin needs a 'padId'" );
+        Popcorn.errors ( "Etherpad-playback plugin needs a 'padId'" );
       }
 
     },
@@ -143,11 +146,15 @@ var etherpadcallback;
           }, 13);
         } else {
       
-          if ( options._link && options._desc ) {
-            if ( document.getElementById( options.target ) ) {
-              document.getElementById( options.target ).innerHTML = "";
-              document.getElementById( options.target ).appendChild( options._link );
-              document.getElementById( options.target ).appendChild( options._desc );
+          var link = options._link;
+          var desc = options._desc;
+          var targ = options.target;
+          
+          if ( link && desc ) {
+            if ( document.getElementById( targ ) ) {
+              document.getElementById( targ ).innerHTML = "";
+              document.getElementById( targ ).appendChild( link );
+              document.getElementById( targ ).appendChild( desc );
               options._added = true;
             }
           }
