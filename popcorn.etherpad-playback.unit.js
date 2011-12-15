@@ -1,32 +1,32 @@
 test( "Popcorn Etherpad Plugin", function() {
-  
+
   var popped = Popcorn( "#video" ),
-      expects = 13, 
+      expects = 13,
       count = 0,
       theArticle = document.getElementById( "etherpaddiv" );
-       
+
   expect( expects );
-  
+
   function plus() {
     if ( ++count === expects ) {
       start();
     }
   }
-  
+
   stop();
-   
+
   ok( "etherpad_playback" in popped, "etherpad_playback is a method of the popped instance" );
   plus();
-  
+
   equals( theArticle.innerHTML, "", "initially, there is nothing in the etherpaddiv" );
   plus();
-  
+
   popped.etherpad_playback({
       start: 1,
       end: 3,
       padId: "popcornjs-test",
       title: "this is the document",
-      revNum: 12, 
+      revNum: 12,
       target: "etherpaddiv"
     });
 
@@ -35,12 +35,12 @@ test( "Popcorn Etherpad Plugin", function() {
       end: 5,
       padId: "popcornjs-test",
       target: "etherpaddiv",
-      revNum: 25, 
+      revNum: 25,
       numberofwords: 43
     })
-    
+
   popped.volume( 0 ).play();
-    
+
   popped.exec( 2, function() {
     notEqual( theArticle.innerHTML, "", "etherpaddiv now contains information" );
     plus();
@@ -52,12 +52,12 @@ test( "Popcorn Etherpad Plugin", function() {
     equals( theArticle.children[ 1 ].innerHTML.split( " " ).length -1, 4, "etherpaddiv contains 4 words" );
     plus();
   });
-  
+
   popped.exec( 3, function() {
     equals( theArticle.innerHTML, "", "etherpaddiv was cleared properly" );
     plus();
   });
-  
+
   popped.exec( 4, function() {
     notEqual( theArticle.innerHTML, "", "etherpaddiv now contains information" );
     plus();
